@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    入札 第{{ subsession.round_number }}ラウンド
+{% endblock %}
+
+{% block content %}
+<p>
+  グループ番号は<strong>{{ participant.id_in_session }}番</strong>です.<br />
+  グループ番号は必ずしもZooｍのブレイクアウトルーム番号とは一致しません．
+</p>
+<br />
+<p>
+    調査結果の値は {{ player.estimated_value }} です.
+</p>
+
+<p>
+     入札できる価格は {{ Constants.min_allowable_bid }} ~ {{ Constants.max_allowable_bid }}の間の整数です．<br />
+     単位は「万ドル」です．
+</p>
+
+{% formfields %}
+
+{% next_button %}
+
+
+
+{% endblock %}
