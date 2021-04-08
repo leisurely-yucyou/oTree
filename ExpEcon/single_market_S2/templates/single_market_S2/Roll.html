@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    役割と個人情報
+{% endblock %}
+
+{% block content %}
+  <p>
+    あなたの役割と個人情報は<br />
+    {% if player.roll_base == 'seller' %}
+    売り手：<strong>{{ player.id_in_group }}</strong><br />
+    1本目の仕入れ値：<strong>{{ player.seller_first_lowest_price }}</strong><br />
+    2本目の仕入れ値：<strong>{{ player.seller_second_lowest_price }}</strong><br />
+    です.
+    {% elif player.roll_base == 'buyer' %}
+    買い手：<strong>{{ player.id_in_group }}</strong><br />
+    1本目の最高価格：<strong>{{ player.buyer_first_highest_price }}</strong><br />
+    2本目の最高価格：<strong>{{ player.buyer_second_highest_price }}</strong><br />
+    です.
+    {% endif %}
+  </p>
+
+{% endblock %}

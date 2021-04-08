@@ -1,0 +1,568 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load static %}
+
+{% block title %}
+  市場実験　セッション2
+{% endblock %}
+
+{% block styles %}
+<link href="{% static "Game.css" %}" rel="stylesheet">
+{% endblock %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+{% block content %}
+
+<!-- 個人情報と取引成立リスト -->
+
+<div id='form_and_list' align='center'>
+  <table class='table' align='center' height='100'>
+    <tr valign='top'>
+      <td width='280'>
+
+        <table class='table' align='center' >
+        {% if player.roll_base == 'seller' %}
+          <tr> <td>売り手：{{ player.id_in_group }}</td> <td>一本目</td> <td>二本目</td></tr>
+          <tr> <td>仕入れ値</td> <td>{{ player.seller_first_lowest_price }}</td> <td>{{ player.seller_second_lowest_price }}</td></tr>
+          <tr><td>税金</td> <td>40円</td> <td>40円</td></tr>
+          <tr> <td>取引価格</td> <td><span id='seller_first_traded_price'>  </span></td> <td><span id='seller_second_traded_price'>  </span></td></tr>
+          <tr> <td>利得</td> <td><span id='seller_first_payoff'>  </span></td> <td id='seller_second_payoff'>  </td></tr>
+
+        {% elif player.roll_base == 'buyer' %}
+          <tr><td>買い手:{{ player.id_in_group }}</td><td>一本目</td><td>二本目</td></tr>
+          <tr> <td>最高価格</td> <td>{{ player.buyer_first_highest_price }}</td> <td>{{ player.buyer_second_highest_price }}</td></tr>
+          <tr> <td>取引価格</td> <td><span id='buyer_first_traded_price'>  </span></td> <td><span id='buyer_second_traded_price'>  </span></td></tr>
+          <tr> <td>利得</td> <td><span id='buyer_first_payoff'>  </span></td> <td id='buyer_second_payoff'>  </td></tr>
+
+        {% endif %}
+        </table>
+
+        <hr />
+
+        <div id='form' style='float:left;'>
+        {% if player.roll_base == 'seller' %}
+          <div >
+            <label float='left'>希望価格：</label>
+            <input id='seller_input_box' type='number' min='0' class='form-control' class='input-medium' placeholder="価格">
+          </div>
+          <br />
+          <button type='button' id='sell_button' class='btn btn-danger' onclick="func_sell_button()">     売り注文     </button>
+          <button type='button' id='sell_cancel' class='btn btn-warning' onclick="func_sell_cancel()">    注文キャンセル</button>
+
+        {% elif player.roll_base == 'buyer' %}
+          <div>
+            <label float='left'>希望価格：</label>
+            <input id='buyer_input_box' type='number' min='0' class='form-control' class='input-medium' placeholder="価格">
+          </div>
+          <br />
+          <button type='button' id='buy_button' class='btn btn-primary' onclick="func_buy_button()">    買い注文     </button>
+          <button type='button' id='buy_cancel' class='btn btn-warning' onclick="func_buy_cancel()">    注文キャンセル</button>
+        {% endif %}
+        </div>
+      </td>
+      <td>
+        <div id='traded_list' style='height:250pt; max-height: 250pt; overflow-y:scroll;'>
+          <table border='0' >
+            <tr align='center'><th colspan='5' width="600" align='center'>取引成立リスト</th></tr >
+            <tr align='center'>
+              <th colspan='1' width='200'>売り手番号</th>
+              <th colspan='1' width='200'>買い手番号</th>
+              <th colspan='1' width='200'>取引価格</th>
+            </tr>
+            <tr v-for='(traded_info, index) in traded_infos' align='center'>
+              <td colspan='1' width='200'>
+                 [[ traded_info.seller ]]
+                <span v-if="traded_info.seller === {{ player.id_in_group }}" class="badge badge-pill badge-primary">あなた</span>
+              </td>
+              <td colspan='1' width='200'>
+                 [[ traded_info.buyer ]]
+                <span v-if="traded_info.buyer === {{ player.id_in_group }}" class="badge badge-pill badge-primary">あなた</span>
+              </td>
+              <td colspan='1' width='200'>        [[ traded_info.price ]]         </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<hr />
+
+<!-- 注文リスト -->
+
+<div id='tables' align='center' >
+  <table class='table' align='center'>
+    <tr valign='top'>
+      <td>
+        <div id='sell_table'>
+        <table border='0' style='float:left;'>
+          <tr align='center'><th colspan='10' width="440" align='center'>売り注文リスト</th></tr >
+          <tr align='center'>
+            <th colspan='2' width='220'>売り手番号</th>
+            <th colspan='2' width='220'>価格</th>
+            <th></th>
+          </tr>
+          <tr v-for='(sell_info, index) in sell_infos'  align='center'>
+            <th colspan='2' width='220'>        [[ sell_info.id_in_group ]]   </th>
+            <th colspan='2' width='220'>        [[ sell_info.price ]]         </th>
+            <th>
+              <span v-if="sell_info.id_in_group === {{ player.id_in_group }}" class="badge badge-pill badge-primary">あなた</span>
+              <button type="button" v-if="(sell_info.id_in_group != {{ player.id_in_group }}) && ({{ player.id_in_group }} > 10) && ({{ player.num_of_trading }} < 2) " v-on:click="sell_accept(sell_info)" class="btn btn-success btn-sm">購入</button>
+            </th>
+          </tr>
+        </table>
+        </div>
+      </td>
+      <td>
+        <div id='buy_table'>
+        <table border='0'>
+          <tr align='center'><th colspan='8' width="440">買い注文リスト</th></tr >
+          <tr align='center'>
+            <th colspan='2' width='220'>買い手番号</th>
+            <th colspan='2' width='220'>価格</th>
+            <th></th>
+          </tr>
+        <tr v-for='(buy_info, index) in buy_infos'  align='center'>
+          <th colspan='2' width='220'>        [[ buy_info.id_in_group ]]   </th>
+          <th colspan='2' width='220'>        [[ buy_info.price ]]         </th>
+          <th>
+            <span v-if="buy_info.id_in_group === {{ player.id_in_group }}" class="badge badge-pill badge-primary">あなた</span>
+            <button type="button" v-if="(buy_info.id_in_group != {{ player.id_in_group }})  && ({{ player.id_in_group }} <= 10) && ({{ player.num_of_trading }} < 2)" v-on:click="buy_accept(buy_info)" class="btn btn-success btn-sm">売却</button>
+          </th>
+        </tr>
+        </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- modal -->
+
+<div class="modal" id="modal_trading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">取引成立</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <span id='modal_result'></span><br />
+        「閉じる」を押して取引を続けてください．
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 買い手への警告 -->
+<div class="modal" id="modal_higher_price" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">エラー</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p>自分の最高価格より高い価格です.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 売り手への警告 -->
+<div class="modal" id="modal_lower_price" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">エラー</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p>仕入れ値より低い価格,または損をする価格です．</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 価格を入力していないときの警告 -->
+<div class="modal" id="modal_not_input" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">エラー</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p>正しい価格を入力してください．</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 取引を2回行ったのに価格入力を行った場合 -->
+<div class="modal" id="modal_trade_enough" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">エラー</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p>すでに取引を2回行いました．</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+let seller_first_traded_price = document.getElementById('seller_first_traded_price');
+let seller_second_traded_price = document.getElementById('seller_second_traded_price');
+let seller_first_payoff = document.getElementById('seller_first_payoff');
+let seller_second_payoff = document.getElementById('seller_second_payoff');
+let buyer_first_traded_price = document.getElementById('buyer_first_traded_price');
+let buyer_second_traded_price = document.getElementById('buyer_second_traded_price');
+let buyer_first_payoff = document.getElementById('buyer_first_payoff');
+let buyer_second_payoff = document.getElementById('buyer_second_payoff');
+
+let seller_input_box = document.getElementById('seller_input_box');
+let buyer_input_box = document.getElementById('buyer_input_box');
+let sell_button = document.getElementById('sell_button');
+let buy_button = document.getElementById('buy_button');
+let sell_cancel = document.getElementById('sell_cancel');
+let buy_cancel = document.getElementById('buy_cancel');
+// let tables = document.getElementById('tables');
+let modal_trading = document.getElementById('modal_trading');
+let modal_result = document.getElementById('modal_result');
+
+var table = new Vue({
+  delimiters: ['[[',']]'],
+  el: '#tables',
+  data:{
+    sell_infos:[],
+    buy_infos:[]
+  },
+  methods:{
+    sell_accept: function(seller){
+      liveSend({
+        'type':'sell_accept',
+        'seller': seller.id_in_group,
+        'price': seller.price
+      })
+    },
+    buy_accept: function(buyer){
+      liveSend({
+        'type':'buy_accept',
+        'buyer': buyer.id_in_group,
+        'price': buyer.price
+      })
+    }
+  }
+});
+
+var traded_list = new Vue({
+  delimiters: ['[[',']]'],
+  el: '#traded_list',
+  data:{
+    traded_infos:[]
+  }
+});
+
+    function liveRecv(data) {
+      type = data.type;
+      console.log(type);
+      if (type=='sell'){
+        var id = data.id_in_group;
+        var existing = table.sell_infos.some((v) => v.id_in_group === id);
+        if (existing){
+          var index = table.sell_infos.findIndex((v) => v.id_in_group === id);
+          table.sell_infos.splice(index, 1, {
+            id_in_group: data.id_in_group,
+            price: data.price
+          });
+          table.sell_infos.sort( function(a,b){
+            return a.price - b.price
+          });
+        }
+        else{
+          table.sell_infos.push({
+            id_in_group: data.id_in_group,
+            price: data.price
+          });
+          table.sell_infos.sort( function(a,b){
+            return a.price - b.price
+          });
+        }
+      }
+      else if (type=='buy'){
+        var id = data.id_in_group;
+        var existing = table.buy_infos.some((v) => v.id_in_group === id);
+        if (existing){
+          var index = table.buy_infos.findIndex((v) => v.id_in_group === id);
+          table.buy_infos.splice(index, 1, {
+            id_in_group: data.id_in_group,
+            price: data.price
+          });
+          table.buy_infos.sort( function(a,b){
+            return b.price - a.price
+          });
+        }
+        else{
+          table.buy_infos.push({
+            id_in_group: data.id_in_group,
+            price: data.price
+          });
+          table.buy_infos.sort( function(a,b){
+            return b.price - a.price
+          });
+        }
+      }
+      else if (type=='sell_accept') {
+        var buyer = data.buyer;
+        var seller = data.seller;
+        var price = data.price;
+        var seller_num_of_trade = data.seller_num_of_trade;
+        var buyer_num_of_trade = data.buyer_num_of_trade;
+
+        var index = table.sell_infos.findIndex((v) => v.id_in_group === seller);
+        table.sell_infos.splice(index, 1);
+        var index = table.buy_infos.findIndex((v) => v.id_in_group === buyer);
+        table.buy_infos.splice(index, 1);
+
+        traded_list.traded_infos.push({
+          seller: seller,
+          buyer: buyer,
+          price: price
+        });
+        if ( {{ player.id_in_group }} == seller){
+          if ( seller_num_of_trade == 1){
+            seller_first_traded_price.innerHTML = '';
+            seller_first_payoff.innerHTML = '';
+            seller_first_traded_price.innerHTML
+              += price;
+            seller_first_payoff.innerHTML
+              += data.seller_payoff;
+          }
+          else if ( seller_num_of_trade == 2){
+            seller_second_traded_price.innerHTML = '';
+            seller_second_payoff.innerHTML = '';
+            seller_second_traded_price.innerHTML
+              += price;
+            seller_second_payoff.innerHTML
+              += data.seller_payoff;
+          }
+          modal_result.innerHTML = '';
+          modal_result.innerHTML
+            += 'あなたは'
+            + '<strong>'
+            + '買い手'
+            + buyer
+            + '</strong>'
+            + 'と取引に成功しました．';
+          open_modal_trading();
+        }
+        else if ( {{ player.id_in_group }} == buyer){
+          if ( buyer_num_of_trade == 1){
+            buyer_first_traded_price.innerHTML = '';
+            buyer_first_payoff.innerHTML = '';
+            buyer_first_traded_price.innerHTML
+              += price;
+            buyer_first_payoff.innerHTML
+              += data.buyer_payoff;
+          }
+          else if ( buyer_num_of_trade == 2){
+            buyer_second_traded_price.innerHTML = '';
+            buyer_second_payoff.innerHTML = '';
+            buyer_second_traded_price.innerHTML
+              += price;
+            buyer_second_payoff.innerHTML
+              += data.buyer_payoff;
+          }
+          modal_result.innerHTML = '';
+          modal_result.innerHTML
+            += 'あなたは'
+            + '<strong>'
+            + '売り手'
+            + seller
+            + '</strong>'
+            + 'と取引に成功しました．';
+          open_modal_trading();
+        }
+
+      }
+
+      else if (type=='buy_accept') {
+        console.log('kiteruyo');
+        var buyer = data.buyer;
+        var seller = data.seller;
+        var price = data.price;
+        var seller_num_of_trade = data.seller_num_of_trade;
+        var buyer_num_of_trade = data.buyer_num_of_trade;
+
+        var index = table.buy_infos.findIndex((v) => v.id_in_group === buyer);
+        table.buy_infos.splice(index, 1);
+        var index = table.sell_infos.findIndex((v) => v.id_in_group === seller);
+        table.sell_infos.splice(index, 1);
+
+        traded_list.traded_infos.push({
+          seller: seller,
+          buyer: buyer,
+          price: price
+        });
+        if ( {{ player.id_in_group }} == seller){
+          if ( seller_num_of_trade == 1){
+            seller_first_traded_price.innerHTML = '';
+            seller_first_payoff.innerHTML = '';
+            seller_first_traded_price.innerHTML
+              += price;
+            seller_first_payoff.innerHTML
+              += data.seller_payoff;
+          }
+          else if ( seller_num_of_trade == 2){
+            seller_second_traded_price.innerHTML = '';
+            seller_second_payoff.innerHTML = '';
+            seller_second_traded_price.innerHTML
+              += price;
+            seller_second_payoff.innerHTML
+              += data.seller_payoff;
+          }
+          modal_result.innerHTML = '';
+          modal_result.innerHTML
+            += 'あなたは'
+            + '<strong>'
+            + '買い手'
+            + buyer
+            + '</strong>'
+            + 'と取引に成功しました．';
+          open_modal_trading();
+        }
+        else if ( {{ player.id_in_group }} == buyer){
+          if ( buyer_num_of_trade == 1){
+            console.log('kokomo');
+            buyer_first_traded_price.innerHTML = '';
+            buyer_first_payoff.innerHTML = '';
+            buyer_first_traded_price.innerHTML
+              += price;
+            buyer_first_payoff.innerHTML
+              += data.buyer_payoff;
+          }
+          else if ( buyer_num_of_trade == 2){
+            buyer_second_traded_price.innerHTML = '';
+            buyer_second_payoff.innerHTML = '';
+            buyer_second_traded_price.innerHTML
+              += price;
+            buyer_second_payoff.innerHTML
+              += data.buyer_payoff;
+          }
+          modal_result.innerHTML = '';
+          modal_result.innerHTML
+            += 'あなたは'
+            + '<strong>'
+            + '売り手'
+            + seller
+            + '</strong>'
+            + 'と取引に成功しました．';
+          open_modal_trading();
+        }
+      }
+      else if (type=='sell_cancel'){
+        var id = data.id_in_group;
+        var existing = table.sell_infos.some((v) => v.id_in_group === id);
+        if (existing){
+          var index = table.sell_infos.findIndex((v) => v.id_in_group === id);
+          table.sell_infos.splice(index, 1)
+        }
+      }
+      else if (type=='buy_cancel'){
+        var id = data.id_in_group;
+        var existing = table.buy_infos.some((v) => v.id_in_group === id);
+        if (existing){
+          var index = table.buy_infos.findIndex((v) => v.id_in_group === id);
+          table.buy_infos.splice(index, 1)
+        }
+      }else if (type=='higher_price'){
+        $('#modal_higher_price').modal();
+      }else if (type=='lower_price'){
+        $('#modal_lower_price').modal();
+      }else if (type=='not_input'){
+        $('#modal_not_input').modal();
+      }else if (type=='trade_enough'){
+        $('#modal_trade_enough').modal();
+      }
+    }
+    var func_sell_button = function () {
+      liveSend({
+        'type': 'sell',
+        'price': parseInt(seller_input_box.value),
+      });
+    };
+    var func_buy_button = function () {
+      liveSend({
+        'type': 'buy',
+        'price': parseInt(buyer_input_box.value)
+      });
+    };
+    var func_sell_cancel = function () {
+      liveSend({
+        'type': 'sell_cancel'
+      });
+    };
+    var func_buy_cancel = function () {
+      liveSend({
+        'type': 'buy_cancel'
+      });
+    };
+    function open_modal_trading() {
+      $('#modal_trading').modal();
+    }
+
+
+
+</script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+{% endblock %}
