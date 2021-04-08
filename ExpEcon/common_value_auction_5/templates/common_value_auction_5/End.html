@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    実験終了
+{% endblock %}
+
+{% block content %}
+<p>
+  グループ番号は<strong>{{ participant.id_in_session }}番</strong>です.<br />
+  グループ番号は必ずしもZooｍのブレイクアウトルーム番号とは一致しません．
+</p>
+<br />
+
+ 全てのラウンドが終了しました．<br />
+ グループの結果は以下のようになりました．<br /><br />
+
+ <table class='table'>
+   <tr><th>ラウンド</th> <td>1</td>
+                        <td>2</td></tr>
+   <tr><th>グループの入札額</th><td>{{ bids_1 }}</td>
+                              <td>{{ bids_2 }}</td></tr>
+   <tr><th>調査結果の値</th><td>{{ estimated_values_1 }}</td>
+                           <td>{{ estimated_values_2 }}</td></tr>
+   <tr><th>油田の価値額の予測値</th><td>{{ forecast_values_1 }}</td>
+                                  <td>{{ forecast_values_2 }}</td></tr>
+   <tr><th>最高入札額</th><td>{{ highest_values_1 }}</td>
+                          <td>{{ highest_values_2 }}</td></tr>
+   <tr><th>油田の価値</th><td>{{ true_values_1 }}</td>
+                          <td>{{ true_values_2 }}</td></tr>
+   <tr><th>グループの利得</th><td>{{ utilities_1 }}</td>
+                            <td>{{ utilities_2 }}</td></tr>
+ </table>
+
+{% endblock %}
