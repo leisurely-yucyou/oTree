@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    実験終了
+{% endblock %}
+
+{% block content %}
+  <p>
+    実験，お疲れさまでした．
+  </p>
+  <br />
+  利得ランキングは以下のようになりました．<br />
+  <p>
+    あなたの被験者番号：{{ player.id_in_group }}
+  </p>
+
+  <div id='lanking'>
+
+  </div>
+  <br /><Br />
+  <p>
+    取引リスト
+  </p>
+  <div align='center'>
+    <table class='table' align="center">
+      <tr><th>価格</th> <th>売り手</th> <th>買い手</th></tr>
+      <tr><td><div id='price_list'></div></td> <td><div id='seller_list'></div></td> <td><div id='buyer_list'></div></td></tr>
+    </table>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+function sort_object_down(dict){
+  var items = Object.keys(dict).map(function(key) {
+    return [key, dict[key]];
+  });
+  items.sort(function(first, second) {
+    return second[1] - first[1];
+  });
+  return(items);
+}
+
+
+
+let lanking = document.getElementById('lanking');
+let price_list = document.getElementById('price_list');
+let seller_list = document.getElementById('seller_list');
+let buyer_list = document.getElementById('buyer_list');
+var lank_list = js_vars.lank_list;
+var price = js_vars.price;
+var buyer = js_vars.buyer;
+var seller = js_vars.seller;
+
+lanking.innerHTML = '';
+var lanking_sort = sort_object_down(lank_list);
+for (i=0;i<lanking_sort.length;i++){
+  lanking.innerHTML
+    += "<br>"
+    +"<small>被験者番号</small>" +"&nbsp;"
+    + "<small>" +lanking_sort[i][0]+ "</small>"
+    +':' +"&emsp;"
+    + "<strong>" +lanking_sort[i][1]+ "</strong>";
+}
+price_list.innerHTML = '';
+buyer_list.innerHTML = '';
+seller_list.innerHTML = '';
+console.log(price);
+console.log(buyer);
+console.log(seller);
+for (i=0; i<price.length; i++){
+  price_list.innerHTML += price[i] + '<br />';
+  buyer_list.innerHTML += buyer[i]+ '<br />';
+  seller_list.innerHTML += seller[i]+ '<br />';
+}
+
+</script>
+{% endblock %}
