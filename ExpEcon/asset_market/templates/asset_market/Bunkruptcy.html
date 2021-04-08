@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    会社の倒産
+{% endblock %}
+
+
+
+{% block content %}
+
+<p>
+  サイコロを振って1の目が出た場合には会社が倒産します．
+</p>
+<button type="button" id="dicebutton" class="btn btn-success">サイコロを振る</button>
+
+
+<div id='dice_result'><br />
+  サイコロの出目は <strong>{{ player.dice_box }}</strong>です．<br />
+  <p>
+    {%if player.num_bunkruptcy == 0 %}
+    よって会社は倒産しませんでした．<br>
+    あなたの所有株式は<strong>{{ player.num_stocks }} 枚</strong>です．<br>
+    {% else %}
+    よって<strong>{{ player.num_bunkruptcy }} 社</strong>が倒産しました．<br >
+    あなたの所有株式は<strong>{{ player.num_stocks }} 枚</strong>です．<br>
+    {% endif %}
+  </p>
+{% if subsession.round_number < Constants.num_rounds %}
+  次のラウンドへ進みます．
+{% endif %}
+  <br />「<strong>次へ</strong>」を押してください.
+  {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+ let dicebutton = document.getElementById('dicebutton');
+ let dice_result = document.getElementById('dice_result');
+
+ dice_result.style.visibility = "hidden";
+ dicebutton.onclick = function(){
+   dice_result.style.visibility = "visible";
+ };
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    株券の買い戻し
+{% endblock %}
+
+{% block content %}
+
+<p>
+  全ラウンドが終了したので，株式が1枚600円で買い戻されます．
+</p>
+<p>
+  あなたの所有株式は<strong>{{ player.num_stocks }}枚</strong>なので <strong>{{player.stock_return }}円</strong>が支払われました．
+  <br />
+  よって所持金は<strong>{{ player.money }}</strong>になりました.
+</p>
+「<strong>次へ</strong>」を押してください.
+    {% next_button %}
+{% endblock %}
