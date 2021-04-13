@@ -1,5 +1,5 @@
 # 共通価値オークション(5人版)
-
+10人版は[こちら](https://github.com/leisurely-yucyou/oTree/blob/7196b542dae3eb2c0f8d80d328af7ea34a66e6e4/ExpEcon/common_value_auction_10/README.md)
 ## 2020年度実施状況
 - グループ分けは無し(個人プレイ)
 - 1ラウンドの時間制限なし
@@ -20,7 +20,7 @@
 必要であればご連絡ください。  
 
 ## ラウンド数の変更
-「[common_value_auction_5/models.py](https://github.com/leisurely-yucyou/oTree/blob/30c0dfe703244f2694e9cb763693b99edca8a758/ExpEcon/common_value_auction_5/models.py)」というファイルの23行目  
+「[common_value_auction_5/models.py](https://github.com/leisurely-yucyou/oTree/blob/30c0dfe703244f2694e9cb763693b99edca8a758/ExpEcon/common_value_auction_5/models.py)」というファイルの24行目  
 ```
 num_rounds = 
 ```
