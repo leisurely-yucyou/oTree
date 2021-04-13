@@ -11,7 +11,7 @@
 - ラウンド数
 
 ## グループ数の変更方法
-「_rooms」というフォルダに入っている「asset_market.txt」の中身を任意のグループ数まで書き足す。  
+「[_rooms/asset_market.txt](https://github.com/leisurely-yucyou/oTree/blob/387375d9ed0ff76a20a3084f6b0e8c1e991cdd6d/ExpEcon/_rooms/asset_market.txt)」というファイルの中身を任意のグループ数まで書き足す。  
 「asset_market.txt」の中身は以下のようになっている。  
 ![スクリーンショット 2021-04-13 162758](https://user-images.githubusercontent.com/48300561/114513534-3e952300-9c75-11eb-98d0-50ed5df8dd0a.png)  
 
