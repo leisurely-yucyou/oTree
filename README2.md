@@ -11,7 +11,7 @@ oTreeで実験を行う方法はいくつかありますが、僕のやり方を
 
 ## 各実験の説明書
  - [株取引ゲーム](https://github.com/leisurely-yucyou/oTree/blob/387375d9ed0ff76a20a3084f6b0e8c1e991cdd6d/ExpEcon/asset_market/README.md)
- - 共通価値オークション
+ - [共通価値オークション](https://github.com/leisurely-yucyou/oTree/blob/bb430fc990c11bf4c360d76b5cc89f02e3333791/ExpEcon/common_value_auction_5/README.md)
  - 2財の取引ゲーム(ケニア実験)
  - 1財の取引ゲーム(発泡酒実験)
 
