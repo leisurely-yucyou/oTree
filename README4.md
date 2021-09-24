@@ -1,8 +1,14 @@
 # ExpEconの使い方
 
 ### 前提知識
-- oTreeの基本的な使い方が分かる
-- oTreeがインストール済み
+- Anacondaがインストール済み 
+- oTreeの基本的な使い方が分かる 
+- oTreeがインストール済み 
+
+上記がまだの場合
+- Anacondaのインストール:こちらの[サイト](https://www.python.jp/install/anaconda/windows/install.html)を参照してインストールしてください
+- oTreeのインストール:こちらの[サイト](https://otree.readthedocs.io/ja/latest/install-windows.html#install-windows)を参照してインストールしてください
+- oTreeの基本的な使い方: こちらの[サイト](https://otree.readthedocs.io/ja/latest/tutorial/intro.html)を参照してください 
 
 ## 手順
 1. まず、画像の右上のCodeボタン(緑色のボタン)をクリックしDwonload ZipからZipファイルをダウンロードします。  
@@ -11,10 +17,11 @@
 2. デスクトップなどにoTree用のフォルダを準備しておきます。
 3. コマンドプロンプト等でカレントディレクトリを先ほど作ったoTree用のフォルダに設定する
 4. ``` otree startproject otreetest```をコマンドプロンプト等で打ち込む(otreetestの部分は任意のワードに変えてください)
-5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する(いらない？)
+5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する
 7. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
 8. ここからはローカル環境とリモート環境に分かれます。
 
+ステップ3がわからない場合はこちら
 
 ## ローカル環境(オフライン)
 5. Anaconda navigatorを起動します。
