@@ -11,7 +11,7 @@
 - oTreeの基本的な使い方: こちらの[サイト](https://otree.readthedocs.io/ja/latest/tutorial/intro.html)を参照してください 
 
 ## 手順
-1. まず、画像の右上のCodeボタン(緑色のボタン)をクリックしDwonload ZipからZipファイルをダウンロードします。  
+1. まず、画像の右上のCodeボタン(緑色のボタン)をクリックしDwonload ZipからZipファイルをダウンロードします。  <br><br>
 ![image](https://user-images.githubusercontent.com/48300561/130906017-a06c47d4-ee15-4b82-b94a-7fdf239df275.png)
 
 2. デスクトップなどにoTree用のフォルダを準備しておきます。
@@ -25,11 +25,14 @@
 
 ## ローカル環境(オフライン)
 5. Anaconda navigatorを起動します。
-6. Enviromentsを開きbase(root)の三角▶からOpen Terminalを選択します。 ![image](https://user-images.githubusercontent.com/48300561/130908221-adcda5cf-b1a2-4c24-9b42-a93e7906fbc6.png)
+6. Enviromentsを開きbase(root)の三角▶からOpen Terminalを選択します。<br><br>
+![image](https://user-images.githubusercontent.com/48300561/130908221-adcda5cf-b1a2-4c24-9b42-a93e7906fbc6.png) <br><br>
 7. Terminal上でカレントディレクトリをoTree用のフォルダに保存したExpEconにします。
-8. Terminalに ```otree devserver```と打ち込みます。  
-![image](https://user-images.githubusercontent.com/48300561/130909436-ad99a945-a1dc-48a8-a7b0-662e3395067e.png)  
-上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。 
+Terminalに ```otree devserver```と打ち込みます。
+
+![image](https://user-images.githubusercontent.com/48300561/130909436-ad99a945-a1dc-48a8-a7b0-662e3395067e.png) 
+
+8.上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。 
 
 ここでもし次のような画面が出た場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/DEBUG%E3%83%A2%E3%83%BC%E3%83%89.md)を参照してください。デバッグモードが悪さをしています。  
 
@@ -43,10 +46,10 @@
 
 11. 一応触り方を説明します。  
 今回は株取引実験を触っていきます。  
-次の画面で株取引実験をクリックします。  
+次の画面で株取引実験をクリックします。  <br><br>
 ![image](https://user-images.githubusercontent.com/48300561/134615769-780b35ae-1c9d-444d-b889-c9df0b4cf8a7.png)  
 
-すると次のような画面が表示されます。  
+すると次のような画面が表示されます。  <br><br>
 
 ![image](https://user-images.githubusercontent.com/48300561/134615820-819b37f7-d3da-4684-92c9-ff633654259d.png)  
 
@@ -60,10 +63,8 @@
 
 
 ## リモート環境(オンライン)
-oTree HubとHerokuを使った実験手順(自己流)を書き残しておきます．
-oTree自体については明治大学の後藤先生の[サイト](https://akrgt.gitbook.io/otree-jp/)とoTreeの[公式HP](https://otree.readthedocs.io/en/latest/)を参照してください．
+oTree HubとHerokuを使った実験手順(自己流)です。
 
-###手順
 [oTree Hub](https://www.otreehub.com/)はoTreeによる実験の開発や設計，モニターができる便利なサイトです．  
 登録自体はサイトに従って進めれば問題ないです．  
 登録してログインすると次のような画面が現れます．  
