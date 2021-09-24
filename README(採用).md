@@ -138,14 +138,29 @@ oTree Hubに戻って「ファイルを選択」から先ほどのファイル�
 ![Qiita10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/f215101a-47f8-adf7-b5a4-609bd6e850e2.png)  
 
 Session configから行う実験を選択し，Number of participantsに参加人数を入力してCreateを押してください。  
-次のような画面が現れるのでURLを被験者に配布してあとは実験を行うだけです。  
+次のような画面が現れるのでURLを被験者に配布することで実験が行えます。  
 
 ![Qiita11.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/5d61f570-7a2c-71e5-7f51-3eec8f76dda3.png)  
 
-以上がoTree HubとHerokuの設定から実際に実験を行う直前までの流れです。  
-各被験者に被験者IDを設定するなどの説明はまたそのうち書きます。   
+## 被験者ID(被験者番号)を設定する
+被験者に任意のIDでoTreeにアクセスしてもらうための設定を行います。<br>
 
+次の画面の[\_rooms]というフォルダを開きます。なければフォルダを作成します。<br><br>
 
+![image](https://user-images.githubusercontent.com/48300561/134622985-905e1f2d-50f3-4f33-9007-e889fa75d490.png)
+<br>
+
+フォルダの中身に実験アプリの名前と同じ名前でテキストファイルを作成します。<br><br>
+
+![image](https://user-images.githubusercontent.com/48300561/134623058-8f153056-18a7-4cfe-b5cf-6e7acd134d26.png)
+
+テキストファイルに任意のIDを書いていきます。
+<br><br>
+
+![image](https://user-images.githubusercontent.com/48300561/134623253-028d5b14-c731-424c-b4a7-38087c71f5d9.png)
+<br>
+
+IDごとに改行します。またIDは英字でも構いません。必要に応じて変更してください。
 
 
 
