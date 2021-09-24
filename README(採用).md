@@ -65,85 +65,85 @@ Terminalに ```otree devserver```と打ち込みます。
 ## リモート環境(オンライン)
 oTree HubとHerokuを使った実験手順(自己流)です。
 
-[oTree Hub](https://www.otreehub.com/)はoTreeによる実験の開発や設計，モニターができる便利なサイトです．  
-登録自体はサイトに従って進めれば問題ないです．  
-登録してログインすると次のような画面が現れます．  
+[oTree Hub](https://www.otreehub.com/)はoTreeによる実験の開発や設計，モニターができる便利なサイトです。   
+登録自体はサイトに従って進めれば問題ないです。  
+登録してログインすると次のような画面が現れます。  
 ![qiita1.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/f0924d1a-799b-068b-e927-f432b0942cf9.png)  
 
-上から二番目の「Heroku server deployment」でHerokuに実験プログラムをdeployすることができます．これを使って実験を進めていきます．  
-oTree HubをHerokuと連携させていない場合には次のような画面が出ます．  
+上から二番目の「Heroku server deployment」でHerokuに実験プログラムをdeployすることができます．これを使って実験を進めていきます。  
+oTree HubをHerokuと連携させていない場合には次のような画面が出ます。  
 
 ![Qiita2.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/151f8d5a-7550-1832-7be8-fe7762bd0c01.png)  
 
-Herokuにアカウントを持っていない場合にはHerokuに登録する必要があるので[Heroku](https://dashboard.heroku.com)にアクセスして登録をしましょう．  
-Herokuの登録手順は[「[初心者向け]herokuをデプロイしよう」](https://qiita.com/DogK0625/items/12178fdc3dd607088ff0)などを参考にしてください．  
-クレジットカードの登録も必要なので行いましょう．私自身これまで何度か実験を行いましたが，請求などはされず，無料の枠内で実験を行えているので金銭的な心配は必要ないです．(クレカという個人情報を渡すのが嫌な人もいるかもしれませんが…)  
+Herokuにアカウントを持っていない場合にはHerokuに登録する必要があるので[Heroku](https://dashboard.heroku.com)にアクセスして登録をします。
+Herokuの登録手順は[「[初心者向け]herokuをデプロイしよう」](https://qiita.com/DogK0625/items/12178fdc3dd607088ff0)などを参考にしてください。  
+クレジットカードの登録も必要なので行います。私自身これまで何度か実験を行いましたが、請求などはされず、無料の枠内で実験を行えているので金銭的な心配は必要ないです。(クレカという個人情報を渡すのが嫌な人もいるかもしれませんが…)  
 
-Herokuの登録が終わったらoTree Hubの先ほどの画面に戻り，「Connect to Heroku」をクリックしてHerokuを連携させます．  
-連携させると次のような画面に移ります．  
+Herokuの登録が終わったらoTree Hubの先ほどの画面に戻り、「Connect to Heroku」をクリックしてHerokuを連携させます。  
+連携させると次のような画面に移ります。  
 
 ![Qiita5.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/ec521221-3ac2-9388-4ffd-ab8bba0052e1.png)  
 
 
-初期状態ではHeroku Projectsには何もなく，Other Sitesにも何もないはずです．(私の画面では過去に行った実験の跡があります．)  
+初期状態ではHeroku Projectsには何もなく、Other Sitesにも何もないです。(私の画面では過去に行った実験の跡があります)  
 
-ここでHerokuのサイトを開き，[Dashboard](https://dashboard.heroku.com/apps)にアクセスします．  
-次のような画面が現れます．(otree-hogeのようなものは表示されません．過去の実験の跡です．)    
+ここでHerokuのサイトを開き、[Dashboard](https://dashboard.heroku.com/apps)にアクセスします。  
+次のような画面が現れます。(otree-〇〇のようなものは表示されません。過去の実験の跡です)    
 
 ![Qiita3.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/c1c6433b-fb73-e8e4-5150-cb94b354361b.png)  
 
-右上にあるNewからCreate new appをクリックします．  
+右上にあるNewからCreate new appをクリックします。  
 
 ![Qiita4.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/b8d7f5bf-6c5f-6fef-4a2d-dbc5c3d53004.png)  
 
-上の画面が現れるので，好きなApp nameを入力してください．RegionはUSのままでいいです．  
-入力できたらCreate appを押してHerokuでの設定は終わりです．  
+上の画面が現れるので，好きなApp nameを入力してください。RegionはUSのままでいいです。  
+入力できたらCreate appを押してHerokuでの設定は終わりです。  
 
 ![Qiita5.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/ec521221-3ac2-9388-4ffd-ab8bba0052e1.png)  
 
-oTree Hubに戻ります．
-先ほどのHeroku ProjectsのOther Sitesに先ほど作ったAppが追加されているのでRegisterをクリックします．  
-Active SitesにAppが追加されるのでDeployをクリックします．  
+oTree Hubに戻ります。
+先ほどのHeroku ProjectsのOther Sitesに先ほど作ったAppが追加されているのでRegisterをクリックします。  
+Active SitesにAppが追加されるのでDeployをクリックします。  
 
 ![Qiita6.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/4e27b510-8bc6-d0cf-cf0e-be5b8fa0dbeb.png)  
 
-上のような画面が現れるので，画面に書いてある通りの手順に従います．  
+上のような画面が現れるので、画面に書いてある通りの手順に従います。  
 
 「1.Go to the "Configure" tab and enable Redis」  
-これについてはスキップします．私は何もしていませんがそれでも実験は出来ました．  
+これについてはスキップします。私は何もしていませんがそれでも実験は出来ました。  
 
 「2.Upload your code below and wait for the the build to succeed」  
-自分のoTreeのコードをアップロードしてくれとのことですが，そのためにまず，コードを「.otreezip」に変換しなければいけません．  
-コマンドプロンプトでディレクトリにアクセスして「otree zip」と打つだけです．もっと簡単に言うと普段デモで実験を動かすときに「otree devserver」をする場面で「otree zip」と打つだけです．  
+自分のoTreeのコードをアップロードしてくれとのことなので、まずコードを「.otreezip」に変換します。  
+コマンドプロンプトでディレクトリにアクセスして「otree zip」と打ちます。もっと簡単に言うと普段デモで実験を動かすときに「otree devserver」をする場面で「otree zip」と打ちます。  
 
 ![Qiita7.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/5dac7583-696a-601e-f057-7aad442bcb8e.png)  
 
-上のようなファイルができていればOKです．  
-oTree Hubに戻って「ファイルを選択」から先ほどのファイルを選択しアップロードします．  
-数分するとエラーを吐くか「Your build succeeded.」が表示されます．  
-エラーが表示された場合は頑張ってエラーを処理してください．  
-ファイルのアップロードに成功したら「Reser DB」をおしてDataBaseを初期化します．  
-これらが終わると以下のような表示になると思います．  
+上のようなファイルができていればOKです。  
+oTree Hubに戻って「ファイルを選択」から先ほどのファイルを選択しアップロードします。  
+数分するとエラーを吐くか「Your build succeeded.」が表示されます。  
+エラーが表示された場合は頑張ってエラーを処理してください。  
+ファイルのアップロードに成功したら「Reser DB」をおしてDataBaseを初期化します。  
+これらが終わると以下のような表示になると思います。  
 
 ![Qiita8.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/e8b75375-0ce9-de8a-f306-14b68e1df947.png)  
 
 「4.Open your app at https://otree-double-auction.herokuapp.com/.」  
-最後にこのURLにアクセスします．URLは各App nameで異なります．  
+最後にこのURLにアクセスします．URLは各App nameで異なります。  
 
 ![Qiita9.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/c63ebdda-da8b-782f-ca91-6faa4ac37a4e.png)  
 
-見慣れた画面が表示されます．  
-画面上部にあるRoomsにアクセスして以下の画面まで進みます.  
+見慣れた画面が表示されます。  
+画面上部にあるRoomsにアクセスして以下の画面まで進みます。  
 
 ![Qiita10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/f215101a-47f8-adf7-b5a4-609bd6e850e2.png)  
 
-Session configから行う実験を選択し，Number of participantsに参加人数を入力してCreateを押してください．  
-次のような画面が現れるのでURLを被験者に配布してあとは実験を行うだけです．  
+Session configから行う実験を選択し，Number of participantsに参加人数を入力してCreateを押してください。  
+次のような画面が現れるのでURLを被験者に配布してあとは実験を行うだけです。  
 
 ![Qiita11.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/391748/5d61f570-7a2c-71e5-7f51-3eec8f76dda3.png)  
 
-以上がoTree HubとHerokuの設定から実際に実験を行う直前までの流れです．  
-各被験者に被験者IDを設定するなどの説明はまたそのうち書きます．   
+以上がoTree HubとHerokuの設定から実際に実験を行う直前までの流れです。  
+各被験者に被験者IDを設定するなどの説明はまたそのうち書きます。   
 
 
 
