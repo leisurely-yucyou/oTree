@@ -35,9 +35,29 @@
 
 ![image](https://user-images.githubusercontent.com/48300561/134614554-3ee1f993-21e3-4a43-8198-b6ab58c6a55a.png)　　
 
-9. 次のような画面が出てきたらokです。  ![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)
-  (ユーザー名とパスワードを求められた場合、初期設定はユーザー名「admin」、パスワード「economics2020」になっています。)
+9. 次のような画面が出てきたらokです。  
+![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)  
+(ユーザー名とパスワードを求められた場合、初期設定はユーザー名「admin」、パスワード「economics2020」になっています。)  
+
 10. あとは各自で色々触ってみてください。
+
+11. 一応触り方を説明します。  
+今回は株取引実験を触っていきます。  
+次の画面で株取引実験をクリックします。  
+![image](https://user-images.githubusercontent.com/48300561/134615769-780b35ae-1c9d-444d-b889-c9df0b4cf8a7.png)  
+
+すると次のような画面が表示されます。  
+
+![image](https://user-images.githubusercontent.com/48300561/134615820-819b37f7-d3da-4684-92c9-ff633654259d.png)  
+
+デモプレイでは3人に設定しているのでSplit screen modeを起動します。  
+
+![image](https://user-images.githubusercontent.com/48300561/134615900-fa32d73e-8fb8-43e6-90ce-e45952f8acd2.png)  
+
+上のような画面が表示され、一つの画面で3人分の画面が表示されデバッグしやすいです。(デモプレイ人数が4人以上の場合は使用できません)  
+
+あとはちゃんとゲームが動くかなどを確認しましょう。もし動かない場合はエラー文を読み、エラー文がよくわからないときはエラー文をそのまま検索にかけてみるといいかもしれません。
+
 
 ## リモート環境(オンライン)
 oTreeについての備忘録(1)として，oTree HubとHerokuを使った実験手順(自己流)を書き残しておきます．
