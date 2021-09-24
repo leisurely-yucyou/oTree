@@ -21,17 +21,15 @@
 7. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
 8. ここからはローカル環境とリモート環境に分かれます。
 
-ステップ3がわからない場合はこちら
+ステップ3がわからない場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/cmd%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md)
 
 ## ローカル環境(オフライン)
 5. Anaconda navigatorを起動します。
 6. Enviromentsを開きbase(root)の三角▶からOpen Terminalを選択します。 ![image](https://user-images.githubusercontent.com/48300561/130908221-adcda5cf-b1a2-4c24-9b42-a93e7906fbc6.png)
 7. Terminal上でカレントディレクトリをoTree用のフォルダに保存したExpEconにします。
-```cd C:\oTree\Expecon #フォルダのPATHは各自のフォルダのPATHに変更してください ```  
-(カレントディレクトリの変更方法が分からない方は[こちら](https://www.javadrive.jp/command/dir/index3.html))
 8. Terminalに ```otree devserver```と打ち込みます。  
 ![image](https://user-images.githubusercontent.com/48300561/130909436-ad99a945-a1dc-48a8-a7b0-662e3395067e.png)  
-上記のような文面が出てきますのでブラウザでhttp://localhost:8000/を開きます。
+上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。
 9. 次のような画面が出てきたらokです。  ![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)
   (ユーザー名とパスワードを求められた場合、初期設定はユーザー名「admin」、パスワード「economics2020」になっています。)
 10. あとは各自で色々触ってみてください。
