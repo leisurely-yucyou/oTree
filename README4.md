@@ -29,7 +29,12 @@
 7. Terminal上でカレントディレクトリをoTree用のフォルダに保存したExpEconにします。
 8. Terminalに ```otree devserver```と打ち込みます。  
 ![image](https://user-images.githubusercontent.com/48300561/130909436-ad99a945-a1dc-48a8-a7b0-662e3395067e.png)  
-上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。
+上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。 
+
+ここでもし次のような画面が出た場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/DEBUG%E3%83%A2%E3%83%BC%E3%83%89.md)を参照してください。デバッグモードが悪さをしています。  
+
+![image](https://user-images.githubusercontent.com/48300561/134614554-3ee1f993-21e3-4a43-8198-b6ab58c6a55a.png)　　
+
 9. 次のような画面が出てきたらokです。  ![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)
   (ユーザー名とパスワードを求められた場合、初期設定はユーザー名「admin」、パスワード「economics2020」になっています。)
 10. あとは各自で色々触ってみてください。
