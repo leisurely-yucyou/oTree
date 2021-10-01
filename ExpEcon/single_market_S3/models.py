@@ -14,9 +14,7 @@ import numpy as np
 
 author = 'Yushi Nagao'
 
-doc = """
-
-"""
+doc = """ """
 
 
 class Constants(BaseConstants):
