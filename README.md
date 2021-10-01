@@ -19,8 +19,8 @@
 ステップ3がわからない場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/cmd%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md)
 4. ``` otree startproject otreetest```をコマンドプロンプト等で打ち込む(otreetestの部分は任意のワードに変えてください)
 5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する
-7. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
-8. テキストエディタでsettings.pyを開きSESSION_CONFIGSとROOMSを次のように書き換えます。 
+6. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
+7. テキストエディタでsettings.pyを開きSESSION_CONFIGSとROOMSを次のように書き換えます。 
 ```
 SESSION_CONFIGS = [
     dict(
@@ -118,32 +118,32 @@ REAL_WORLD_CURRENCY_CODE = 'JPY'
 REAL_WORLD_CURRENCY_DECIMAL_PLACES=0
 USE_POINTS = False
 ```
-9. ここからはローカル環境とリモート環境に分かれます。
+8. ここからはローカル環境とリモート環境に分かれます。
 
 
 
 ## ローカル環境(オフライン)
-5. Anaconda navigatorを起動します。
-6. Enviromentsを開きbase(root)の三角▶からOpen Terminalを選択します。<br><br>
+1. Anaconda navigatorを起動します。
+2. Enviromentsを開きbase(root)の三角▶からOpen Terminalを選択します。<br><br>
 ![image](https://user-images.githubusercontent.com/48300561/130908221-adcda5cf-b1a2-4c24-9b42-a93e7906fbc6.png) <br><br>
-7. Terminal上でカレントディレクトリをoTree用のフォルダに保存したExpEconにします。
+3. Terminal上でカレントディレクトリをoTree用のフォルダに保存したExpEconにします。
 Terminalに ```otree devserver```と打ち込みます。
 
 ![image](https://user-images.githubusercontent.com/48300561/130909436-ad99a945-a1dc-48a8-a7b0-662e3395067e.png) 
 
-8.上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。 
+4.上記のような文面が出てきますのでブラウザでhttp://localhost:8000/ を開きます。 
 
 ここでもし次のような画面が出た場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/DEBUG%E3%83%A2%E3%83%BC%E3%83%89.md)を参照してください。デバッグモードが悪さをしています。  
 
 ![image](https://user-images.githubusercontent.com/48300561/134614554-3ee1f993-21e3-4a43-8198-b6ab58c6a55a.png)　　
 
-9. 次のような画面が出てきたらokです。  
+5. 次のような画面が出てきたらokです。  
 ![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)  
 (ユーザー名とパスワードを求められた場合はsettings.pyで確認できます)  
 
-10. あとは各自で色々触ってみてください。
+6. あとは各自で色々触ってみてください。
 
-11. 一応触り方を説明します。  
+7. 一応触り方を説明します。  
 今回は株取引実験を触っていきます。  
 次の画面で株取引実験をクリックします。  <br><br>
 ![image](https://user-images.githubusercontent.com/48300561/134615769-780b35ae-1c9d-444d-b889-c9df0b4cf8a7.png)  
