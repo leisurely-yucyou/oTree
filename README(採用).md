@@ -139,7 +139,7 @@ Terminalに ```otree devserver```と打ち込みます。
 
 9. 次のような画面が出てきたらokです。  
 ![image](https://user-images.githubusercontent.com/48300561/130909697-879943fb-dde0-41e3-8548-46f99307b56f.png)  
-(ユーザー名とパスワードを求められた場合、初期設定はユーザー名「admin」、パスワード「economics2020」になっています。)  
+(ユーザー名とパスワードを求められた場合はsettings.pyで確認できます)  
 
 10. あとは各自で色々触ってみてください。
 
