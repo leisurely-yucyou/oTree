@@ -20,7 +20,104 @@
 4. ``` otree startproject otreetest```をコマンドプロンプト等で打ち込む(otreetestの部分は任意のワードに変えてください)
 5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する
 7. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
-8. テキストエディタでsettings.py
+8. テキストエディタでsettings.pyを開きSESSION_CONFIGSとROOMSを次のように書き換えます。 
+```
+SESSION_CONFIGS = [
+    dict(
+        name = 'common_value_auction_S1',
+        display_name = '共通価値オークション_S1',
+        num_demo_participants = 5,
+        app_sequence=['common_value_auction_5']
+    ),
+    dict(
+        name = 'common_value_auction_S2',
+        display_name = '共通価値オークション_S2',
+        num_demo_participants = 10,
+        app_sequence=['common_value_auction_10']
+    ),
+    dict(
+        name = 'double_auction',
+        display_name='ダブルオークション',
+        num_demo_participants = 4,
+        app_sequence=['double_auction']
+    ),
+    dict(
+        name='asset_market',
+        display_name = '株取引実験',
+        num_demo_participants=3,
+        app_sequence=['asset_market']
+    ),
+    dict(
+        name = 'single_market_S1',
+        display_name = 'セッション1',
+        num_demo_participants = 20,
+        app_sequence=['single_market_S1']
+    ),
+    dict(
+        name = 'single_market_S2',
+        display_name = 'セッション2',
+        num_demo_participants = 20,
+        app_sequence=['single_market_S2']
+    ),
+    dict(
+        name = 'single_market_S3',
+        display_name = 'セッション3',
+        num_demo_participants = 20,
+        app_sequence=['single_market_S3']
+    ),
+]
+```
+
+```
+ROOMS = [
+    dict(
+    name='common_value_auction',
+    display_name='共通価値オークション',
+    participant_label_file='_rooms/common_value_auction.txt',
+    use_secure_urls=False
+    ),
+    dict(
+    name='doubleauction',
+    display_name='ダブルオークション',
+    participant_label_file='_rooms/double_auction.txt',
+    use_secure_urls=False
+    ),
+    dict(
+    name='asset_market',
+    display_name='資産市場実験',
+    participant_label_file='_rooms/asset_market.txt',
+    use_secure_urls=False
+    ),
+    dict(
+    name='single_market',
+    display_name='一財の市場取引実験',
+    participant_label_file='_rooms/single_market.txt',
+    use_secure_urls=False
+    ),
+    dict(
+    name='single_market',
+    display_name='一財の市場取引実験',
+    participant_label_file='_rooms/single_market.txt',
+    use_secure_urls=False
+    ),
+    dict(
+    name='single_market',
+    display_name='一財の市場取引実験',
+    participant_label_file='_rooms/single_market.txt',
+    use_secure_urls=False
+    )
+
+]
+```
+
+また、LANGUAGE_CODEなども書き換えます。
+```
+LANGUAGE_CODE = 'ja'
+
+REAL_WORLD_CURRENCY_CODE = 'JPY'
+REAL_WORLD_CURRENCY_DECIMAL_PLACES=0
+USE_POINTS = False
+```
 9. ここからはローカル環境とリモート環境に分かれます。
 
 
