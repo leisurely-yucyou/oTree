@@ -15,13 +15,15 @@
 ![image](https://user-images.githubusercontent.com/48300561/130906017-a06c47d4-ee15-4b82-b94a-7fdf239df275.png)
 
 2. デスクトップなどにoTree用のフォルダを準備しておきます。
-3. コマンドプロンプト等でカレントディレクトリを先ほど作ったoTree用のフォルダに設定する
+3. コマンドプロンプト等でカレントディレクトリを先ほど作ったoTree用のフォルダに設定する<br>
+ステップ3がわからない場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/cmd%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md)
 4. ``` otree startproject otreetest```をコマンドプロンプト等で打ち込む(otreetestの部分は任意のワードに変えてください)
 5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する
 7. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
-8. ここからはローカル環境とリモート環境に分かれます。
+8. テキストエディタでsettings.py
+9. ここからはローカル環境とリモート環境に分かれます。
 
-ステップ3がわからない場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/cmd%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md)
+
 
 ## ローカル環境(オフライン)
 5. Anaconda navigatorを起動します。
