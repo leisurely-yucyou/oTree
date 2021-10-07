@@ -19,7 +19,19 @@
 ステップ3がわからない場合は[こちら](https://github.com/leisurely-yucyou/oTree/blob/main/%E8%A3%9C%E8%B6%B3%E8%B3%87%E6%96%99/cmd%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md)
 4. ``` otree startproject otreetest```をコマンドプロンプト等で打ち込む(otreetestの部分は任意のワードに変えてください)
 5. 4番でoTree用フォルダ内にプロジェクトが出来たのでカレントディレクトリをそこに変更する
-6. 先ほどダウンロードしたZipファイルをoTree用フォルダに展開します。
+6. 先ほどダウンロードしたZipファイルを解凍しExpEconのフォルダ内のものをoTree用フォルダにコピーします。
+<br>  
+
+![image](https://user-images.githubusercontent.com/48300561/136321339-0966d4ee-365c-4705-a790-ccaa80d3d015.png)  
+
+<br>  
+上のファイルとフォルダをotree startprojectでできたフォルダ(下の画像のファイル等がある場所)へ移す。
+<br>  
+
+![image](https://user-images.githubusercontent.com/48300561/136321518-44416a6d-6868-442d-bf44-8c6eeb7fe371.png)  
+
+<br>  
+
 7. テキストエディタでsettings.pyを開きSESSION_CONFIGSとROOMSを次のように書き換えます。 
 ```
 SESSION_CONFIGS = [
