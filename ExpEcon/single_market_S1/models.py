@@ -12,7 +12,7 @@ from otree.api import (
 import numpy as np
 
 
-author = 'Yushi Nagao'
+
 
 class Constants(BaseConstants):
     name_in_url = 'session_1'
