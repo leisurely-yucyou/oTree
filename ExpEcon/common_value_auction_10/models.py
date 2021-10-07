@@ -10,9 +10,6 @@ from otree.api import (
 )
 from statistics import mean
 
-
-author = 'Yushi Nagao'
-
 doc = """
 10人で行う共通価値オークション
 """
