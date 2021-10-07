@@ -9,7 +9,7 @@ from otree.api import (
     currency_range,
 )
 
-author = 'Yushi Nagao'
+
 
 class Constants(BaseConstants):
     name_in_url = 'stock_trade'
