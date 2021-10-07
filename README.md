@@ -61,19 +61,19 @@ SESSION_CONFIGS = [
     ),
     dict(
         name = 'single_market_S1',
-        display_name = 'セッション1',
+        display_name = '一財の市場取引実験セッション1',
         num_demo_participants = 20,
         app_sequence=['single_market_S1']
     ),
     dict(
         name = 'single_market_S2',
-        display_name = 'セッション2',
+        display_name = '一財の市場取引実験セッション2',
         num_demo_participants = 20,
         app_sequence=['single_market_S2']
     ),
     dict(
         name = 'single_market_S3',
-        display_name = 'セッション3',
+        display_name = '一財の市場取引実験セッション3',
         num_demo_participants = 20,
         app_sequence=['single_market_S3']
     ),
@@ -96,25 +96,25 @@ ROOMS = [
     ),
     dict(
     name='asset_market',
-    display_name='資産市場実験',
+    display_name='株取引実験',
     participant_label_file='_rooms/asset_market.txt',
     use_secure_urls=False
     ),
     dict(
     name='single_market',
-    display_name='一財の市場取引実験',
+    display_name='一財の市場取引実験S1',
     participant_label_file='_rooms/single_market.txt',
     use_secure_urls=False
     ),
     dict(
     name='single_market',
-    display_name='一財の市場取引実験',
+    display_name='一財の市場取引実験S2',
     participant_label_file='_rooms/single_market.txt',
     use_secure_urls=False
     ),
     dict(
     name='single_market',
-    display_name='一財の市場取引実験',
+    display_name='一財の市場取引実験S3',
     participant_label_file='_rooms/single_market.txt',
     use_secure_urls=False
     )
