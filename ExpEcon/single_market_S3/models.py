@@ -12,9 +12,7 @@ from otree.api import (
 import numpy as np
 
 
-author = 'Yushi Nagao'
 
-doc = """ """
 
 
 class Constants(BaseConstants):
