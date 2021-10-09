@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+
+
+  <p>
+     <input type="button" value="カウント停止" id="endcount" onclick="stopShowing();">
+  </p>
+  <p id="PassageArea">(ここにカウントが表示されます)</p>
+
+  <div id='dice_result'>
+    {% next_button %}
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  var PassSec;   // 秒数カウント用変数
+  var starsec;
+  var finishsec;
+  var nowDate = new Date();
+  let dice_result = document.getElementById('dice_result');
+  dice_result.style.visibility = "hidden";
+
+  // 繰り返し処理の中身
+  function showPassage() {
+     PassSec++;   // カウントアップ
+     var msg = "ページを表示してから" + "<br>" + PassSec / 100 + "<br>" +  "秒が経過しました。";   // 表示文作成
+     document.getElementById("PassageArea").innerHTML = msg;   // 表示更新
+  }
+
+  // 繰り返し処理の開始
+  window.onload = function() {
+     PassSec = 0;   // カウンタのリセット
+     PassageID = setInterval('showPassage()',10);   // タイマーをセット(1000ms間隔)
+     startsec = nowDate.getTime();
+     liveSend({'type':'startsec','value':parseInt(startsec)});
+  }
+
+  // 繰り返し処理の中止
+  function stopShowing() {
+     clearInterval( PassageID );   // タイマーのクリア
+     nowDate = new Date();
+     finishsec = nowDate.getTime();
+     liveSend({'type':'finishsec','value':finishsec});
+     dice_result.style.visibility = "visible";
+
+  }
+// 参照
+// https://techacademy.jp/magazine/15558
+// https://otree.readthedocs.io/ja/latest/live.html
+// https://otree.readthedocs.io/en/latest/pages.html
+// https://techacademy.jp/magazine/9650
+// https://otree.readthedocs.io/en/latest/models.html
+// https://www.nishishi.com/javascript-tips/date-diff-calc.html
+// https://www.nishishi.com/javascript-tips/setinterval-passage.html
+// https://www.nishishi.com/javascript-tips/realtime-countdown-deadline.html#realtime-countdown-deadline4
+// https://www.nishishi.com/javascript-tips/setinterval-passage.html
+</script>
+{% endblock %}
