@@ -17,7 +17,7 @@ class Waiting(WaitPage):
     pass
 
 class Game(Page):
-    timeout_seconds = 180
+    timeout_seconds = 360
     live_method = 'live_auction'
 
 class Results(Page):
