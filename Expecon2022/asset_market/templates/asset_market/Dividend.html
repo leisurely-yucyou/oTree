@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    配当金
+{% endblock %}
+
+{% block content %}
+
+<p>
+  ラウンドが終了したので配当金が所有株式1枚につき100円支払われます．
+</p>
+<p>
+  あなたの所有株式は<strong>{{ player.num_stocks }}枚</strong>なので <strong>{{player.dividend }}円</strong>が支払われました．
+  <br />
+  よって所持金は<strong>{{ player.money }}</strong>になりました.
+</p>
+「<strong>次へ</strong>」を押してください.
+    {% next_button %}
+{% endblock %}

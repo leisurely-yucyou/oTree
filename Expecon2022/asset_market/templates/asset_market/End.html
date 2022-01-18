@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    実験終了
+{% endblock %}
+
+{% block content %}
+
+全ラウンドが終了し，実験は終了しました．<br />
+グループの最終所持金額は<strong>{{ player.money }}</strong>でした．<br /><br />
+
+所持金ランキングは以下のようになりました．<br />
+
+<div id='lanking'>
+
+</div>
+<br />
+お疲れさまでした．
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+function sort_object_down(dict){
+  var items = Object.keys(dict).map(function(key) {
+    return [key, dict[key]];
+  });
+  items.sort(function(first, second) {
+    return second[1] - first[1];
+  });
+  return(items);
+}
+
+
+let lanking = document.getElementById('lanking');
+var lank_list = js_vars.lank_list;
+
+lanking.innerHTML = '';
+var lanking_sort = sort_object_down(lank_list);
+for (i=0;i<lanking_sort.length;i++){
+  lanking.innerHTML
+    += "<br>"
+    +"<small>グループ</small>" +"&nbsp;"
+    + "<small>" +lanking_sort[i][0]+ "</small>"
+    +':' +"&emsp;"
+    + "<strong>" +lanking_sort[i][1]+ "</strong>";
+}
+
+
+</script>
+{% endblock %}

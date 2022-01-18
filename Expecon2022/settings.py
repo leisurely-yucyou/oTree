@@ -1,12 +1,12 @@
 from os import environ
 
 SESSION_CONFIGS = [
-    # dict(
-    #    name='public_goods',
-    #    display_name="Public Goods",
-    #    num_demo_participants=3,
-    #    app_sequence=['public_goods', 'payment_info']
-    # ),
+    dict(
+        name='asset_market',
+        display_name = '株取引実験',
+        num_demo_participants=3,
+        app_sequence=['asset_market']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -20,17 +20,27 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ja'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'JPY'
+REAL_WORLD_CURRENCY_DECIMAL_PLACES=0
+USE_POINTS = False
 
-ROOMS = []
+ROOMS = [dict(
+    name='asset_market',
+    display_name='資産市場実験',
+    participant_label_file='_rooms/asset_market.txt',
+    use_secure_urls=False
+    ),
+]
+
+#DEBUG = False
+AUTH_LEVEL='STUDY'
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
+ADMIN_PASSWORD = 'expecon2022'
 
 DEMO_PAGE_INTRO_HTML = """ """
 

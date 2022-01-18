@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    第{{ subsession.round_number }}ラウンド取引結果
+{% endblock %}
+
+{% block content %}
+<p>
+  あなたの現在の所持金は<strong>{{ player.money }}</strong>，所有株数は<strong>{{ player.num_stocks }}</strong>枚です．
+</p>
+
+<br />「<strong>次へ</strong>」を押してください.
+    {% next_button %}
+{% endblock %}

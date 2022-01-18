@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    第{{ subsession.round_number }}ラウンド　作戦タイム
+{% endblock %}
+
+{% block content %}
+<p>
+  1分間の作戦タイムです．<br />
+  1分経過後, 次のラウンドが始まります．
+</p>
+<p>
+  あなたのグループの現在の所持金は<strong>{{ player.money }}</strong>，所有株数は<strong>{{ player.num_stocks }}</strong>枚です．
+</p>
+<p>
+  倒産した株の総数  :{{ group.total_bunkruptcy }}<br />
+  生き残った株の総数:{{ group.total_survive_stock }} <br />
+</p>
+{% endblock %}
